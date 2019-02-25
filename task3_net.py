@@ -25,4 +25,5 @@ class task3_model(nn.Module):
 
     def forward( self , x):
         x = nn.functional.interpolate(x , scale_factor =8)
-        x = self.mode
+        x = self.model(x)
+        return x
