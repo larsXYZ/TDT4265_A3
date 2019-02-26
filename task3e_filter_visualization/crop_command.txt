@@ -1,0 +1,2 @@
+mogrify -crop 440x440+100+20 -path ./cropped *.png
+
