@@ -20,7 +20,7 @@ class Trainer:
         self.learning_rate = 5e-4
         self.early_stop_count = 4
 
-        # Architecture
+        # Architecturetrainer.
 
         # Since we are doing multi-class classification, we use the CrossEntropyLoss
         self.loss_criterion = nn.CrossEntropyLoss()
