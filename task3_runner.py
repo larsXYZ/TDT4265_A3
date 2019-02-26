@@ -14,7 +14,7 @@ class Trainer:
         Set hyperparameters, architecture, tracking variables etc.
         """
         # Define hyperparameters
-        self.epochs = 100
+        self.epochs = 1
         self.batch_size = 32
         self.learning_rate = 5e-4
         self.early_stop_count = 4
@@ -131,6 +131,8 @@ class Trainer:
 if __name__ == "__main__":
     trainer = Trainer()
     trainer.train()
+
+    torch.save(trainer.model, "trained_model")
 
     os.makedirs("plots", exist_ok=True)
     # Save plots and show them
