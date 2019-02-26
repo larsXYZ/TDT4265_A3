@@ -99,6 +99,7 @@ class Trainer:
         # Track initial loss/accuracy
         self.validation_epoch()
         for epoch in range(self.epochs):
+            print("Epoch:", epoch)
             # Perform a full pass through all the training samples
             for batch_it, (X_batch, Y_batch) in enumerate(self.dataloader_train):
                 # X_batch is the CIFAR10 images. Shape: [batch_size, 3, 32, 32]
