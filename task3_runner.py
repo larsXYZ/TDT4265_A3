@@ -1,6 +1,7 @@
 import os
 import matplotlib.pyplot as plt
 import torch
+import pickle
 from torch import nn
 from dataloaders import load_cifar10
 from utils import to_cuda, compute_loss_and_accuracy
@@ -132,7 +133,11 @@ if __name__ == "__main__":
     trainer = Trainer()
     trainer.train()
 
+    print("Saving model")
+
     torch.save(trainer.model, "trained_model")
+
+    print("Making plots")
 
     os.makedirs("plots", exist_ok=True)
     # Save plots and show them
@@ -143,7 +148,8 @@ if __name__ == "__main__":
     plt.plot(trainer.TEST_LOSS, label="Testing Loss")
     plt.legend()
     plt.savefig(os.path.join("plots", "final_loss.png"))
-    plt.show()
+    #plt.show()
+    plt.clf()
 
     plt.figure(figsize=(12, 8))
     plt.title("Accuracy")
@@ -152,7 +158,18 @@ if __name__ == "__main__":
     plt.plot(trainer.TEST_ACC, label="Testing Accuracy")
     plt.legend()
     plt.savefig(os.path.join("plots", "final_accuracy.png"))
-    plt.show()
+    #plt.show()
+
+    print("Saving vectors")
+
+    results = {}
+    results["validation loss"] = trainer.VALIDATION_LOSS
+    results["train loss"] = trainer.TRAIN_LOSS
+    results["test loss"] = trainer.TEST_LOSS
+
+    with open('results.pickle', 'wb') as handle:
+        pickle.dump(results, handle)
+
 
     print("Final test accuracy:", trainer.TEST_ACC[-trainer.early_stop_count])
     print("Final validation accuracy:", trainer.VALIDATION_ACC[-trainer.early_stop_count])
