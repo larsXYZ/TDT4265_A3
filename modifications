@@ -1,0 +1,7 @@
+Modification				Accuracy
+Batch normalization			0.7526 (23)
+Adam optimizer (lr = 5e-2)		0.100  (25)
+Adam optimizer (lr = 5e-4)		0.7378 (18)
+BN and GA				0.796  (30)
+
+Bigger network gives in general greater accuracy. but it takes longer for the network to train.
