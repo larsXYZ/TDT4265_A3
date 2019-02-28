@@ -29,7 +29,7 @@ class task1_model(nn.Module):
                 stride=1,
                 padding=2
             ),
-            nn.MaxPool2d(kernel_size=2, stride=3),
+            nn.MaxPool2d(kernel_size=2, stride=2),
             nn.ReLU(),
             nn.BatchNorm2d(64)
 
@@ -44,7 +44,7 @@ class task1_model(nn.Module):
                 stride=1,
                 padding=2
             ),
-            nn.MaxPool2d(kernel_size=2, stride=3),
+            nn.MaxPool2d(kernel_size=2, stride=2),
             nn.ReLU(),
             nn.BatchNorm2d(128)
         )
@@ -58,14 +58,14 @@ class task1_model(nn.Module):
                 stride=1,
                 padding=2
             ),
-            nn.MaxPool2d(kernel_size=2, stride=3),
+            nn.MaxPool2d(kernel_size=2, stride=2),
             nn.ReLU(),
             nn.BatchNorm2d(256)
         )
 
         #First dense layer
         self.fourth_layer = nn.Sequential(
-            nn.Linear(256, 64),
+            nn.Linear(256*16, 64),
             nn.ReLU()
         )
 
@@ -86,7 +86,7 @@ class task1_model(nn.Module):
         x = self.second_layer(x)
         x = self.third_layer(x)
 
-        x = x.view(-1, 256)
+        x = x.view(-1, 256*4*4)
 
         #Dense
         x = self.fourth_layer(x)
