@@ -65,7 +65,7 @@ class task1_model(nn.Module):
             nn.BatchNorm2d(128)
         )
 
-        # Third CNN layer
+        # Fourth CNN layer
         self.fourth_layer = nn.Sequential(
             nn.Conv2d(
                 in_channels=128,
@@ -75,10 +75,11 @@ class task1_model(nn.Module):
                 padding=2
             ),
             nn.MaxPool2d(kernel_size=3, stride=2),
+            nn.Dropout(0.2),
             nn.ReLU(),
             nn.BatchNorm2d(256)
         )
-        # Third CNN layer
+        # Fifth CNN layer
         self.fifth_layer = nn.Sequential(
             nn.Conv2d(
                 in_channels=256,
@@ -89,6 +90,7 @@ class task1_model(nn.Module):
             ),
             nn.MaxPool2d(kernel_size=3, stride=2),
             nn.ReLU(),
+            nn.Dropout(0.2),
             nn.BatchNorm2d(256)
         )
 

@@ -5,6 +5,7 @@ from torch import nn
 from dataloaders import load_cifar10
 from utils import to_cuda, compute_loss_and_accuracy
 import model1_net
+import pickle
 
 #MODEL1
 class Trainer:
@@ -135,6 +136,11 @@ if __name__ == "__main__":
     trainer.train()
 
     os.makedirs("plots", exist_ok=True)
+
+    #Save data for plotting in task 3d
+    data = [trainer.TRAIN_LOSS, trainer.VALIDATION_LOSS, trainer.TEST_LOSS]
+    pickle.dump(data, open("model1_data.p",'wb'))
+
     # Save plots and show them
     plt.figure(figsize=(12, 8))
     plt.title("Cross Entropy Loss")
