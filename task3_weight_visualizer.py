@@ -10,6 +10,8 @@ import numpy as np
 import torch
 from utils import to_cuda
 
+#Visualizes weights for task 3g
+
 #Plots a pytorch tensor as an image. Since the tensor is [ch, width, height] and not [width, height, ch] we transpose
 def show(img):
     npimg = img.numpy()

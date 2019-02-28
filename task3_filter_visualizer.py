@@ -10,6 +10,8 @@ import numpy as np
 import torch
 from utils import to_cuda
 
+#Visualizes filters for task 3e and 3f
+
 #Plots a pytorch tensor as an image. Since the tensor is [ch, width, height] and not [width, height, ch] we transpose
 def show(img):
     npimg = img.numpy()
